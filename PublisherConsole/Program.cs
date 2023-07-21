@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PublisherData;
 using PublisherDomain;
+using System.Net.WebSockets;
 
 using (PubContext context = new PubContext())
 {
@@ -22,6 +23,7 @@ void AddAuthor()
     context.Authors.Add(new Author { FirstName = "Stephen", LastName = "King" });
     context.Authors.Add(new Author { FirstName = "Joe", LastName = "Abercrombie" });
     context.Authors.Add(new Author { FirstName = "George RR.", LastName = "Martin" });
+    context.Authors.Add(new Author { FirstName = "Joseph", LastName = "King" });
 
     context.SaveChanges();
 } 
@@ -49,11 +51,25 @@ AddAuthor();
 
 /*GetAuthors();*/
 
-SkipAndTakeAuthors();
+//SkipAndTakeAuthors();
+
+//FindIt();
 
 //QueryFilters();
 
+//SortAuthors();
+
+QueryAggregate();
+
 DropTables();
+
+
+void SortAuthors()
+{
+    var authorsByLastName = _context.Authors.OrderBy(a => a.LastName).ThenBy(a => a.FirstName).ToList();
+    
+    authorsByLastName.ForEach(a => Console.WriteLine($"{a.LastName}, {a.FirstName}"));
+}
 
 void GetAuthors()
 {
@@ -69,6 +85,13 @@ void GetAuthors()
         patrick.Books.ForEach(x => Console.WriteLine($" * {x.Title}"));
     }
 
+}
+
+void QueryAggregate()
+{
+    var author = _context.Authors.FirstOrDefault(a => a.FirstName == "Stephen");
+
+    Console.WriteLine($"QueryAggregate: {author?.FirstName} {author?.LastName}");
 }
 
 void SkipAndTakeAuthors()
@@ -90,7 +113,14 @@ void QueryFilters()
 {
     var authors = _context.Authors.Where(a => EF.Functions.Like(a.LastName, "R%")).ToList(); //_context.Authors.Where(s => s.FirstName == "Patrick").ToList();
 
-    authors.ForEach(x => Console.WriteLine($"{x.FirstName} {x.LastName}" ));
+    authors.ForEach(x => Console.WriteLine($"QueryFilters: {x.FirstName} {x.LastName}" ));
+}
+
+void FindIt()
+{
+    var authorIDTwo = _context.Authors.Find(2);
+
+    Console.WriteLine(authorIDTwo?.FirstName);
 }
 
 void DropTables()
