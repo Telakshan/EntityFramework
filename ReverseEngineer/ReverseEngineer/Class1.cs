@@ -1,7 +1,6 @@
-﻿namespace ReverseEngineer
-{
-    public class Class1
-    {
+﻿namespace ReverseEngineer;
 
-    }
+public class Class1
+{
+
 }

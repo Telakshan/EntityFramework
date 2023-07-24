@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ReverseEngineer;
+﻿namespace ReverseEngineer;
 
 public partial class Author
 {

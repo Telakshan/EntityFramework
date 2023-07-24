@@ -16,4 +16,6 @@ public partial class Book
     public int AuthorId { get; set; }
 
     public virtual Author Author { get; set; } = null!;
+
+    public string Genre { get; set; } = string.Empty!;
 }
