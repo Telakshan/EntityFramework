@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PublisherData;
-using PublisherDomain;
 
 /*using (PubContext context = new PubContext())
 {
@@ -24,15 +23,15 @@ IList<Author> _authors = new List<Author>() {
 
 //AddAuthor();
 
-//GetAuthors();
+GetAuthors();
 
-AddAuthor();
+//AddAuthor();
 
 //AddMultipleAuthors();
 
 //AddMultipleAuthorsList(_authors);
 
-GetAuthors();
+//GetAuthors();
 
 //SkipAndTakeAuthors();
 
@@ -48,7 +47,7 @@ GetAuthors();
 
 //DropTables();
 
-Truncate();
+//Truncate();
 
 void AddAuthor()
 {
@@ -164,13 +163,12 @@ void GetAuthors()
 
     authors.ForEach(x => Console.WriteLine($"{x.FirstName} {x.LastName}"));
 
-    var patrick = authors.FirstOrDefault(x => x.FirstName == "Patrick");
+    var abercrombie = authors.FirstOrDefault(x => x.Id == 4);
 
-    if (patrick != null)
+    if (abercrombie != null)
     {
-        patrick.Books.ForEach(x => Console.WriteLine($" * {x.Title}"));
+        abercrombie.Books.ForEach(x => Console.WriteLine($" * {x.Title}"));
     }
-
 }
 
 void QueryAggregate()

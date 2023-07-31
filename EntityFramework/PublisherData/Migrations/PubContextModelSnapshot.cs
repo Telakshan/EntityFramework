@@ -22,7 +22,7 @@ namespace PublisherData.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PublisherDomain.Author", b =>
+            modelBuilder.Entity("PublisherData.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,9 +41,41 @@ namespace PublisherData.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FirstName = "Rhoda",
+                            LastName = "Lerman"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            FirstName = "Sofia",
+                            LastName = "Segovia"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            FirstName = "Hasan",
+                            LastName = "Piker"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FirstName = "Joe",
+                            LastName = "Abercrombie"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            FirstName = "Stephen",
+                            LastName = "King"
+                        });
                 });
 
-            modelBuilder.Entity("PublisherDomain.Book", b =>
+            modelBuilder.Entity("PublisherData.Book", b =>
                 {
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
@@ -57,6 +89,10 @@ namespace PublisherData.Migrations
                     b.Property<decimal>("BasePrice")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("datetime2");
 
@@ -69,11 +105,22 @@ namespace PublisherData.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            BookId = 1,
+                            AuthorId = 4,
+                            BasePrice = 20.0m,
+                            Genre = "",
+                            PublishDate = new DateTime(2023, 7, 30, 11, 44, 31, 740, DateTimeKind.Local).AddTicks(5120),
+                            Title = "Before they are hanged"
+                        });
                 });
 
-            modelBuilder.Entity("PublisherDomain.Book", b =>
+            modelBuilder.Entity("PublisherData.Book", b =>
                 {
-                    b.HasOne("PublisherDomain.Author", "Author")
+                    b.HasOne("PublisherData.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -82,7 +129,7 @@ namespace PublisherData.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("PublisherDomain.Author", b =>
+            modelBuilder.Entity("PublisherData.Author", b =>
                 {
                     b.Navigation("Books");
                 });
