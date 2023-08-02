@@ -20,5 +20,9 @@ public class PubContext: DbContext
         modelBuilder.Entity<Author>().HasData(
             new Author { Id = 1, FirstName = "Rhoda", LastName = "Lerman" },
             new Author { Id = 2, FirstName = "Sofia", LastName = "Segovia"});
+
+        modelBuilder.Entity<Book>().HasData(
+            new Book { Title = "Entity Framework", BookId = 1, AuthorId = 2, BasePrice = 8.0m, Genre = "Coding", PublishDate = DateTime.Now }
+            );
     }
 } 
