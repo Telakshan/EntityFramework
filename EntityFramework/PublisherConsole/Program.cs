@@ -8,15 +8,19 @@ using PublisherData;
 
 PubContext _context = new PubContext();
 
-IList<Author> _authors = new List<Author>() { 
+List<Author> _authors = new List<Author>() { 
         new Author { FirstName = "Patrick", LastName = "Rothfuss" },
         new Author { FirstName = "Brandon", LastName = "Sanderson" },
         new Author { FirstName = "H.P.", LastName = "Lovecraft" },
+
+                                            };
+
+List<Author> _authors2 = new List<Author>()
+{
         new Author { FirstName = "Stephen", LastName = "King" },
         new Author { FirstName = "Joe", LastName = "Abercrombie" },
-        new Author { FirstName = "George RR.", LastName = "Martin" },
-        new Author { FirstName = "Joseph", LastName = "King" }
-                                            };
+        new Author { FirstName = "Patrick", LastName = "King" }
+};
 
 //Method calls
 //GetAuthors();
@@ -31,7 +35,7 @@ IList<Author> _authors = new List<Author>() {
 
 //AddMultipleAuthorsList(_authors);
 
-GetAuthors();
+//GetAuthors();
 
 //SkipAndTakeAuthors();
 
@@ -220,3 +224,12 @@ void Truncate()
     _context.Authors.ExecuteDelete();
     _context.SaveChanges();
 }
+
+void LinqSelectTest()
+{
+    var selected =_authors.Select((x, index) => _authors[index].FirstName = _authors2[index].FirstName);
+
+    _authors.ForEach(x => Console.WriteLine($"\n{x.FirstName} {x.LastName}"));
+}
+
+LinqSelectTest();
