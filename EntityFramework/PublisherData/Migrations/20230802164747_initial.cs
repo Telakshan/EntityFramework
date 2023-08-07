@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace PublisherData.Migrations
 {
     /// <inheritdoc />
@@ -34,7 +36,8 @@ namespace PublisherData.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PublishDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    AuthorId = table.Column<int>(type: "int", nullable: false)
+                    AuthorId = table.Column<int>(type: "int", nullable: false),
+                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,6 +49,20 @@ namespace PublisherData.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Authors",
+                columns: new[] { "Id", "FirstName", "LastName" },
+                values: new object[,]
+                {
+                    { 1, "Rhoda", "Lerman" },
+                    { 2, "Sofia", "Segovia" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "BookId", "AuthorId", "BasePrice", "Genre", "PublishDate", "Title" },
+                values: new object[] { 1, 2, 8.0m, "Coding", new DateTime(2023, 8, 2, 12, 47, 47, 243, DateTimeKind.Local).AddTicks(6259), "Entity Framework" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",
