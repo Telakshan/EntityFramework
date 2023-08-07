@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PublisherData;
-using PublisherDomain;
 
 /*using (PubContext context = new PubContext())
 {
@@ -9,30 +8,34 @@ using PublisherDomain;
 
 PubContext _context = new PubContext();
 
-IList<Author> _authors = new List<Author>() { 
+List<Author> _authors = new List<Author>() { 
         new Author { FirstName = "Patrick", LastName = "Rothfuss" },
         new Author { FirstName = "Brandon", LastName = "Sanderson" },
         new Author { FirstName = "H.P.", LastName = "Lovecraft" },
+
+                                            };
+
+List<Author> _authors2 = new List<Author>()
+{
         new Author { FirstName = "Stephen", LastName = "King" },
         new Author { FirstName = "Joe", LastName = "Abercrombie" },
-        new Author { FirstName = "George RR.", LastName = "Martin" },
-        new Author { FirstName = "Joseph", LastName = "King" }
-                                            };
+        new Author { FirstName = "Patrick", LastName = "King" }
+};
 
 //Method calls
 //GetAuthors();
 
 //AddAuthor();
 
-//GetAuthors();
+GetAuthors();
 
-AddAuthor();
+//AddAuthor();
 
 //AddMultipleAuthors();
 
 //AddMultipleAuthorsList(_authors);
 
-GetAuthors();
+//GetAuthors();
 
 //SkipAndTakeAuthors();
 
@@ -48,7 +51,7 @@ GetAuthors();
 
 //DropTables();
 
-Truncate();
+//Truncate();
 
 void AddAuthor()
 {
@@ -164,11 +167,11 @@ void GetAuthors()
 
     authors.ForEach(x => Console.WriteLine($"{x.FirstName} {x.LastName}"));
 
-    var patrick = authors.FirstOrDefault(x => x.FirstName == "Patrick");
+    var authorWithBooks = authors.FirstOrDefault(x => x.Books.Count > 0);
 
-    if (patrick != null)
+    if (authorWithBooks != null)
     {
-        patrick.Books.ForEach(x => Console.WriteLine($" * {x.Title}"));
+        authorWithBooks.Books.ForEach(x => Console.WriteLine($"\nBooks\n * {x.Title} - {x.Author.FirstName} {x.Author.LastName}"));
     }
 
 }
@@ -221,3 +224,12 @@ void Truncate()
     _context.Authors.ExecuteDelete();
     _context.SaveChanges();
 }
+
+void LinqSelectTest()
+{
+    var selected =_authors.Select((x, index) => _authors[index].FirstName = _authors2[index].FirstName);
+
+    _authors.ForEach(x => Console.WriteLine($"\n{x.FirstName} {x.LastName}"));
+}
+
+LinqSelectTest();
