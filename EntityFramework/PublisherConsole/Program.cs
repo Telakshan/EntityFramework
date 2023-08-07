@@ -173,7 +173,6 @@ void GetAuthors()
     {
         authorWithBooks.Books.ForEach(x => Console.WriteLine($"\nBooks\n * {x.Title} - {x.Author.FirstName} {x.Author.LastName}"));
     }
-
 }
 
 void QueryAggregate()
