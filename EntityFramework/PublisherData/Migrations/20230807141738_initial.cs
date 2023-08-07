@@ -55,25 +55,20 @@ namespace PublisherData.Migrations
                 columns: new[] { "Id", "FirstName", "LastName" },
                 values: new object[,]
                 {
-                    { 1, "Rhoda", "Lerman" },
-<<<<<<<< HEAD:EntityFramework/PublisherData/Migrations/20230802164747_initial.cs
-                    { 2, "Sofia", "Segovia" }
-========
                     { 2, "Sofia", "Segovia" },
                     { 3, "Hasan", "Piker" },
                     { 4, "Joe", "Abercrombie" },
                     { 5, "Stephen", "King" }
->>>>>>>> da131532fe2d8e8914958fd830dda0349aa1740c:EntityFramework/PublisherData/Migrations/20230730154431_initial.cs
                 });
 
             migrationBuilder.InsertData(
                 table: "Books",
                 columns: new[] { "BookId", "AuthorId", "BasePrice", "Genre", "PublishDate", "Title" },
-<<<<<<<< HEAD:EntityFramework/PublisherData/Migrations/20230802164747_initial.cs
-                values: new object[] { 1, 2, 8.0m, "Coding", new DateTime(2023, 8, 2, 12, 47, 47, 243, DateTimeKind.Local).AddTicks(6259), "Entity Framework" });
-========
-                values: new object[] { 1, 4, 20.0m, "", new DateTime(2023, 7, 30, 11, 44, 31, 740, DateTimeKind.Local).AddTicks(5120), "Before they are hanged" });
->>>>>>>> da131532fe2d8e8914958fd830dda0349aa1740c:EntityFramework/PublisherData/Migrations/20230730154431_initial.cs
+                values: new object[,]
+                {
+                    { 1, 2, 8.0m, "Coding", new DateTime(2023, 8, 7, 10, 17, 38, 391, DateTimeKind.Local).AddTicks(9994), "Entity Framework" },
+                    { 2, 4, 20.0m, "", new DateTime(2023, 8, 7, 10, 17, 38, 392, DateTimeKind.Local).AddTicks(56), "Before they are hanged" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",

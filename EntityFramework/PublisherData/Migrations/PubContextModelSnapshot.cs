@@ -45,17 +45,9 @@ namespace PublisherData.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            FirstName = "Rhoda",
-                            LastName = "Lerman"
-                        },
-                        new
-                        {
                             Id = 2,
                             FirstName = "Sofia",
                             LastName = "Segovia"
-<<<<<<< HEAD
-=======
                         },
                         new
                         {
@@ -74,7 +66,6 @@ namespace PublisherData.Migrations
                             Id = 5,
                             FirstName = "Stephen",
                             LastName = "King"
->>>>>>> da131532fe2d8e8914958fd830dda0349aa1740c
                         });
                 });
 
@@ -113,19 +104,20 @@ namespace PublisherData.Migrations
                         new
                         {
                             BookId = 1,
-<<<<<<< HEAD
                             AuthorId = 2,
                             BasePrice = 8.0m,
                             Genre = "Coding",
-                            PublishDate = new DateTime(2023, 8, 2, 12, 47, 47, 243, DateTimeKind.Local).AddTicks(6259),
+                            PublishDate = new DateTime(2023, 8, 7, 10, 17, 38, 391, DateTimeKind.Local).AddTicks(9994),
                             Title = "Entity Framework"
-=======
+                        },
+                        new
+                        {
+                            BookId = 2,
                             AuthorId = 4,
                             BasePrice = 20.0m,
                             Genre = "",
-                            PublishDate = new DateTime(2023, 7, 30, 11, 44, 31, 740, DateTimeKind.Local).AddTicks(5120),
+                            PublishDate = new DateTime(2023, 8, 7, 10, 17, 38, 392, DateTimeKind.Local).AddTicks(56),
                             Title = "Before they are hanged"
->>>>>>> da131532fe2d8e8914958fd830dda0349aa1740c
                         });
                 });
 

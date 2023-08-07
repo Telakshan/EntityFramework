@@ -23,11 +23,11 @@ List<Author> _authors2 = new List<Author>()
 };
 
 //Method calls
-//GetAuthors();
+GetAuthors();
 
 //AddAuthor();
 
-GetAuthors();
+//GetAuthors();
 
 //AddAuthor();
 
@@ -231,4 +231,4 @@ void LinqSelectTest()
     _authors.ForEach(x => Console.WriteLine($"\n{x.FirstName} {x.LastName}"));
 }
 
-LinqSelectTest();
+//LinqSelectTest();
