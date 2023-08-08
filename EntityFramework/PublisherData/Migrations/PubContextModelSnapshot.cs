@@ -107,7 +107,7 @@ namespace PublisherData.Migrations
                             AuthorId = 2,
                             BasePrice = 8.0m,
                             Genre = "Coding",
-                            PublishDate = new DateTime(2023, 8, 7, 10, 17, 38, 391, DateTimeKind.Local).AddTicks(9994),
+                            PublishDate = new DateTime(2023, 8, 7, 16, 49, 45, 973, DateTimeKind.Local).AddTicks(8504),
                             Title = "Entity Framework"
                         },
                         new
@@ -116,7 +116,7 @@ namespace PublisherData.Migrations
                             AuthorId = 4,
                             BasePrice = 20.0m,
                             Genre = "",
-                            PublishDate = new DateTime(2023, 8, 7, 10, 17, 38, 392, DateTimeKind.Local).AddTicks(56),
+                            PublishDate = new DateTime(2023, 8, 7, 16, 49, 45, 973, DateTimeKind.Local).AddTicks(8557),
                             Title = "Before they are hanged"
                         });
                 });
@@ -125,9 +125,7 @@ namespace PublisherData.Migrations
                 {
                     b.HasOne("PublisherData.Author", "Author")
                         .WithMany("Books")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId");
 
                     b.Navigation("Author");
                 });

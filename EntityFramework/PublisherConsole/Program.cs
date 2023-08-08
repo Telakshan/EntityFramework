@@ -22,8 +22,14 @@ List<Author> _authors2 = new List<Author>()
         new Author { FirstName = "Patrick", LastName = "King" }
 };
 
+List<Book> books = new List<Book>() { new Book { Title = "The Way of Kings", BasePrice = 15.0m, Genre = "Fantasy", PublishDate = DateTime.Now } };
+
 //Method calls
 GetAuthors();
+
+//AddBooks();
+
+//GetBooks();
 
 //AddAuthor();
 
@@ -52,6 +58,18 @@ GetAuthors();
 //DropTables();
 
 //Truncate();
+
+
+void AddBooks()
+{
+    _context.Books.AddRange(books);
+    _context.SaveChanges();
+}
+
+void GetBooks()
+{
+    _context.Books.ToList().ForEach(x => Console.WriteLine($"{x.Title}"));
+}
 
 void AddAuthor()
 {

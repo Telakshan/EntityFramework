@@ -46,8 +46,7 @@ namespace PublisherData.Migrations
                         name: "FK_Books_Authors_AuthorId",
                         column: x => x.AuthorId,
                         principalTable: "Authors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -66,8 +65,8 @@ namespace PublisherData.Migrations
                 columns: new[] { "BookId", "AuthorId", "BasePrice", "Genre", "PublishDate", "Title" },
                 values: new object[,]
                 {
-                    { 1, 2, 8.0m, "Coding", new DateTime(2023, 8, 7, 10, 17, 38, 391, DateTimeKind.Local).AddTicks(9994), "Entity Framework" },
-                    { 2, 4, 20.0m, "", new DateTime(2023, 8, 7, 10, 17, 38, 392, DateTimeKind.Local).AddTicks(56), "Before they are hanged" }
+                    { 1, 2, 8.0m, "Coding", new DateTime(2023, 8, 7, 16, 49, 45, 973, DateTimeKind.Local).AddTicks(8504), "Entity Framework" },
+                    { 2, 4, 20.0m, "", new DateTime(2023, 8, 7, 16, 49, 45, 973, DateTimeKind.Local).AddTicks(8557), "Before they are hanged" }
                 });
 
             migrationBuilder.CreateIndex(
