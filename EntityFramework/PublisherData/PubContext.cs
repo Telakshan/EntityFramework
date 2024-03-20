@@ -11,7 +11,7 @@ public class PubContext: DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
-            "Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Publisher"
+            "Data Source = localhost; Initial Catalog = Publisher; Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
             ).LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name } );
     }
 
